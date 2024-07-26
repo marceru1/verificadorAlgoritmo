@@ -1,15 +1,24 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.println("Digite um valor de 1 a 8: ");
+        //esse codigo verifica se uma conta tem exatamente 8 caracteres
+        Scanner scanner = new Scanner(System.in);
+        String numeroConta = scanner.nextLine(); //tem que ficar antes do
+                                                //try pra ele ler antes do loop e fazer a verificacao la embaixo na class
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+        try {
+            verificarNumeroConta(numeroConta); //aqui ele entra no verificar o numero da conta
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());// aqui ele vai verificar a condicao e ver se passa ou nao
+        }
+    }
+    public static void verificarNumeroConta(String numeroConta) {
+        if (numeroConta.length() != 8) {
+            throw new IllegalArgumentException ("Erro: Numero de conta invalido. Digite exatamente 8 digitos.");
+        } else {
+            throw new IllegalArgumentException("Numero de conta valido.");
         }
     }
 }
